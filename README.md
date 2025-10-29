@@ -23,14 +23,14 @@ Les données sont stockées dans des fichiers JSON dans `/src/Data` :
 - `vlucas/phpdotenv` : gestion de la clé secrète
 
 ## Étapes du projet
-1. **Données de départ** : création des fichiers JSON
-2. **Repositories** : classes pour lire/écrire les fichiers JSON, respect des interfaces
-3. **Services métier (Use Cases)** : logique métier (réserver, lister, ajouter, etc.)
-4. **Controllers** : une classe par cas d'utilisation, chaque méthode = une action
-5. **Router** : routeur central qui oriente vers le bon controller
+1. **Données de départ** : création des fichiers JSON (fait)
+2. **Repositories** : classes pour lire/écrire les fichiers JSON, respect des interfaces (fait)
+3. **Services métier (Use Cases)** : logique métier (réserver, lister, ajouter, etc.) (fait)
+4. **Controllers** : une classe par cas d'utilisation, chaque méthode = une action (fait)
+5. **Router** : routeur central qui oriente vers le bon controller (fait)
 6. **Vues (front)** : création des pages dans `/src/View` (accueil, liste, fiche spectacle, profil, etc.)
-7. **Middleware** : vérification JWT, filtrage par rôle
-8. **JWT & Refresh Token** : génération et vérification des jetons
+7. **Middleware** : vérification JWT, filtrage par rôle (fait)
+8. **JWT & Refresh Token** : génération et vérification des jetons (fait)
 9. **Tests unitaires** : sur les modèles, use cases, contrôleurs
 10. **Sécurité** : hashage des mots de passe, validation des entrées, cookies sécurisés
 
