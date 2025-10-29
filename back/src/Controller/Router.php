@@ -50,8 +50,7 @@ class Router
                 (new UserController($userService))->login($username, $password);
                 break;
             case 'user.profile':
-                $userId = intval($_GET['id'] ?? 0);
-                (new UserController($userService))->profile($userId);
+                (new UserController($userService))->profile();
                 break;
             case 'admin.addShow':
                 $data = $_POST;

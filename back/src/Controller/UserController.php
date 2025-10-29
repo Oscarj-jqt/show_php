@@ -36,10 +36,13 @@ class UserController
         }
     }
 
-    public function profile(int $userId): void
+    public function profile(): void
     {
-        $user = $this->userService->getProfile($userId);
-        if ($user) {
+        $user = \App\Middleware\AuthMiddleware::requireAuth();
+        $userId = $user['sub']; 
+
+        $userEntity = $this->userService->getProfile($userId);
+        if ($userEntity) {
             include __DIR__ . '/../View/user_profile.php';
         } else {
             echo "Utilisateur non trouvé.";

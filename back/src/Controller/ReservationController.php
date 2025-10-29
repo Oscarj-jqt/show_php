@@ -5,6 +5,7 @@
 namespace App\Controller;
 
 use App\Service\ReservationService;
+use App\Middleware\AuthMiddleware;
 
 
 class ReservationController
@@ -24,6 +25,10 @@ class ReservationController
 
     public function reserve(int $showId, int $userId, int $ticketCount, \DateTime $date): void
     {
+        // Sécurisation via JWT
+        $user = AuthMiddleware::requireAuth();
+        $userId = $user['sub'];
+
         $this->reservationService->reserve($showId, $userId, $ticketCount, $date);
         include __DIR__ . '/../View/reservation_confirmation.php';
     }

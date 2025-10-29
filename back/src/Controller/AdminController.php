@@ -6,7 +6,10 @@
 
 namespace App\Controller;
 
+use App\Model\Show;
 use App\Service\ShowService;
+use App\Middleware\AuthMiddleware;
+use App\Middleware\RoleMiddleware;
 
 class AdminController
 {
@@ -19,14 +22,10 @@ class AdminController
 
     public function addShow(array $data): void
     {
-        // Vérification du rôle admin
-        if (!isset($_SESSION['user_id']) || ($_SESSION['role'] ?? '') !== 'admin') {
-            http_response_code(403);
-            echo "Accès interdit : administrateur uniquement.";
-            return;
-        }
-
-        $show = new \App\Model\Show(
+        // Vérification JWT + rôle admin
+        $user = AuthMiddleware::requireAuth();
+        RoleMiddleware::requireAdmin($user);
+        $show = new Show(
             id: rand(1000, 9999),
             titre: $data['titre'],
             date: new \DateTime($data['date']),
