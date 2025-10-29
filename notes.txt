@@ -1,0 +1,44 @@
+Exercice 3
+
+On veut un site de spectacle
+
+Les cas d'utilisation sont les suivants : 
+- Page d'accueil -> publique (message d'accueil avec menu de navigation)
+- Page liste les spectacles -> publique 
+- Page fiche spectacle -> publique 
+- Réserver une place -> utilisateurs identifiés (inscrits sur le site)
+- Accéder à une page de profil -> liste des billets que j'ai réservé 
+-> utilisateurs identifiés 
+- Ajouter des spectacles -> administrateurs du site (mettre de l'information et la tester)
+
+Données : on peut faire un fichier .json avec quelques données
+"publique" donc accès conditionné en fonction des rôles 
+
+
+Définissons bien les entités
+Spectacle (id, titre, date, description, nombre de places, etc.)
+pour spectacle il y aura forcément un prix, doit-on créer une classe ou bien l'inclure dans la classe Show ou les 2 ?
+User (id, identifiant, mot de passe hashé, rôle)
+Reservation (id, user_id, spectacle_id, nombre de billets, date)
+
+
+
+
+## Contraintes
+- Implémenter un router avec liste des pages
+- Controllers -> méthodes qui résolvent chaque cas d'utilisation
+-> En option : implémenter le middleware sous forme d'attribut PHP
+- Filtrer les accès en fonction des contraintes particulières des cas d'utilisation
+- Faire un application php "normalisées"
+-> classes
+-> des espaces de nom
+- refresh token (jeton de raffraîchissement) à partir d'une autre route pour regénérer
+le jeton (durée de vie courte) donc génération de 2 tokens (jetons d'accès et de raffraîchissement)
+
+
+readme 
+contributeurs, objectif
+
+
+firebase/php-jwt → gestion JWT
+vlucas/phpdotenv → gestion de la clé secrète (bonne pratique)
