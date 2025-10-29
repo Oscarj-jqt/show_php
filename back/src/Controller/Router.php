@@ -56,6 +56,9 @@ class Router
                 $data = $_POST;
                 (new AdminController($showService))->addShow($data);
                 break;
+            case 'refresh':
+                (new UserController($userService))->refreshToken();
+                break;
             default:
                 http_response_code(404);
                 echo "Page non trouvée";

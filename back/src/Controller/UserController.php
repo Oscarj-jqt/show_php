@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Cas d'utiliation : inscription, connexion, gestion du profil
+ * Cas d'utiliation : inscription, connexion, gestion du profil et rafraîchissement du token
  */
 
 namespace App\Controller;
@@ -46,6 +46,19 @@ class UserController
             include __DIR__ . '/../View/user_profile.php';
         } else {
             echo "Utilisateur non trouvé.";
+        }
+    }
+
+    public function refreshToken(): void
+    {
+        $data = json_decode(file_get_contents('php://input'), true);
+        $refreshToken = $data['refresh_token'] ?? '';
+        $accessToken = $this->userService->refreshToken($refreshToken);
+        if ($accessToken) {
+            echo json_encode(['access_token' => $accessToken]);
+        } else {
+            http_response_code(401);
+            echo json_encode(['message' => 'Refresh token invalide ou expiré']);
         }
     }
 }

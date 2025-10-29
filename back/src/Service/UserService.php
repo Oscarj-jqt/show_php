@@ -1,13 +1,14 @@
 <?php
 
 /**
- * Service pour inscription, connexion, récupération profil les utilisateurs
+ * Service pour inscription, connexion, récupération profil les utilisateurs 
  */
 
 namespace App\Service;
 
 use App\Repository\User\UserRepositoryInterface;
 use App\Model\User;
+use App\Service\JwtService;
 
 class UserService
 {
@@ -45,5 +46,27 @@ class UserService
     public function getProfile(int $userId): ?User
     {
         return $this->userRepo->findById($userId);
+    }
+
+    public function refreshToken(string $refreshToken): ?string
+    {
+        $file = __DIR__ . '/../../Data/refresh_tokens.json';
+        $tokens = file_exists($file) ? json_decode(file_get_contents($file), true) : [];
+        $hash = hash('sha256', $refreshToken);
+        $found = null;
+        foreach ($tokens as $row) {
+            if ($row['token_hash'] === $hash && $row['expires_at'] > time()) {
+                $found = $row;
+                break;
+            }
+        }
+        if (!$found) {
+            return null;
+        }
+        // Générer un nouveau JWT
+        $jwtService = new JwtService();
+        return $jwtService->generate([
+            'sub' => $found['user_id']
+        ]);
     }
 }
