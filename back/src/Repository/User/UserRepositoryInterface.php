@@ -3,7 +3,7 @@
  * Interface pour accéder aux données des utilisateurs
  */
 
-namespace App\Repository;
+namespace App\Repository\User;
 
 use App\Model\User;
 

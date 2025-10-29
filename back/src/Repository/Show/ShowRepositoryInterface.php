@@ -3,7 +3,7 @@
 /**
  * Interface pour accéder aux données des spectacles
  */
-namespace App\Repository;
+namespace App\Repository\Show;
 
 use App\Model\Show;
 

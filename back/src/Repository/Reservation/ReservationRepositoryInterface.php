@@ -2,7 +2,7 @@
 /**
  * Interface pour accéder aux données des réservations
  */
-namespace App\Repository;
+namespace App\Repository\Reservation;
 
 use App\Model\Reservation;
 
