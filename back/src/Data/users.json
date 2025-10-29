@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "username": "admin",
+    "name": "Admin Principal",
+    "firstname": "Alice",
+    "lastname": "Durand",
+    "email": "admin@spectacle.fr",
+    "password": "$2y$10$examplehashadmin",
+    "role": "admin"
+  },
+  {
+    "id": 2,
+    "username": "jdoe",
+    "name": "John Doe",
+    "firstname": "John",
+    "lastname": "Doe",
+    "email": "john.doe@email.fr",
+    "password": "$2y$10$examplehashuser",
+    "role": "user"
+  },
+  {
+    "id": 3,
+    "username": "mdupont",
+    "name": "Marie Dupont",
+    "firstname": "Marie",
+    "lastname": "Dupont",
+    "email": "marie.dupont@email.fr",
+    "password": "$2y$10$examplehashuser2",
+    "role": "user"
+  }
+]

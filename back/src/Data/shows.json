@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "titre": "Le Grand Ballet",
+    "date": "2025-11-15",
+    "description": "Un spectacle de danse classique exceptionnel.",
+    "seats": 120
+  },
+  {
+    "id": 2,
+    "titre": "Comédie Musicale - Broadway Night",
+    "date": "2025-12-01",
+    "description": "Les plus grands succès de Broadway revisités.",
+    "seats": 200
+  },
+  {
+    "id": 3,
+    "titre": "Spectacle Jeune Public - Magie et Marionnettes",
+    "date": "2025-12-20",
+    "description": "Un moment féérique pour les enfants et leurs familles.",
+    "seats": 80
+  }
+]

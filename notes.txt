@@ -15,15 +15,6 @@ Données : on peut faire un fichier .json avec quelques données
 "publique" donc accès conditionné en fonction des rôles 
 
 
-Définissons bien les entités
-Spectacle (id, titre, date, description, nombre de places, etc.)
-pour spectacle il y aura forcément un prix, doit-on créer une classe ou bien l'inclure dans la classe Show ou les 2 ?
-User (id, identifiant, mot de passe hashé, rôle)
-Reservation (id, user_id, spectacle_id, nombre de billets, date)
-
-
-
-
 ## Contraintes
 - Implémenter un router avec liste des pages
 - Controllers -> méthodes qui résolvent chaque cas d'utilisation
@@ -42,3 +33,33 @@ contributeurs, objectif
 
 firebase/php-jwt → gestion JWT
 vlucas/phpdotenv → gestion de la clé secrète (bonne pratique)
+
+🧭 Étapes à venir (chronologie logique)
+1. Données de départ
+Créer les fichiers .json dans /src/Data :
+shows.json
+users.json
+reservations.json
+Ces fichiers servent de “base” pour les repositories (implémentation infra).
+2. Implémentations concrètes des repositories
+Créer les classes qui lisent/écrivent les fichiers JSON pour chaque entité.
+Respecter l’interface de repository.
+3. Use Cases (services métier)
+Implémenter les règles métier : réserver, lister, ajouter, etc.
+Ces services utilisent les repositories abstraits.
+4. Controllers
+Une classe par cas d’utilisation, chaque méthode = une action
+Les controllers reçoivent les requêtes, appellent les use cases
+5. Router
+Un routeur central qui oriente chaque route vers le bon controller/méthode.
+6. Middleware
+Auth : vérifie le JWT (accès réservé)
+Role : filtre selon le rôle (admin/user)
+7. JWT & Refresh Token
+Service pour générer, vérifier, rafraîchir les jetons
+8. Tests unitaires
+Sur modèles, use cases, controleurs critiques
+9. Sécurité
+Hashage des mots de passe (password_hash)
+Validation des entrées
+Cookies sécurisés
