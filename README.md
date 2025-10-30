@@ -40,3 +40,4 @@ Etape 6 en cours
 ## Contributeurs
 - Oscar JACQUET
 - Aryles BEN CHABANE
+- Issa ABDOULAYE
