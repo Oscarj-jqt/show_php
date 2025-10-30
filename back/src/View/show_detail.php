@@ -24,7 +24,7 @@ $title = $show['title'] ?? 'Fiche spectacle';
 
     <div class="show-actions">
         <?php if (!isset($currentUser)): ?>
-            <p>Vous devez <a href="/login">vous connecter</a> pour réserver des places.</p>
+            <p>Vous devez <a href="/?route=user.login">vous connecter</a> pour réserver des places.</p>
         <?php else: ?>
             <?php if (!empty($show['availableSeats'])): ?>
                 <form action="/shows/<?= urlencode($show['id']) ?>/reserve" method="post" class="form-inline">

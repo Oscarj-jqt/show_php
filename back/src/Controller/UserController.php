@@ -20,7 +20,12 @@ class UserController
 
     public function register(array $data): void
     {
-        $this->userService->register($data);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->userService->register($data);
+            echo "Inscription réussie !";
+        } else {
+            include __DIR__ . '/../View/register.php';
+        }
     }
 
     public function login(string $username, string $password): void

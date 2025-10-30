@@ -15,6 +15,8 @@ use App\Repository\Reservation\ReservationJsonRepository;
 
 class Router
 {
+
+    
     public function handle(): void
     {
         $route = $_GET['route'] ?? 'home';
@@ -41,8 +43,7 @@ class Router
                 (new ShowController($showService))->detail($id);
                 break;
             case 'user.register':
-                $data = $_POST;
-                (new UserController($userService))->register($data);
+                (new UserController($userService))->register($_POST);
                 break;
             case 'user.login':
                 $username = $_POST['username'] ?? '';
@@ -63,5 +64,10 @@ class Router
                 http_response_code(404);
                 echo "Page non trouvée";
         }
+    }
+
+    public function run(): void
+    {
+        $this->handle();
     }
 }

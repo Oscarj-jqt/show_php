@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-$autoload = __DIR__ . '/../vendor/autoload.php';
+$autoload = __DIR__ . '/../../vendor/autoload.php';
 if (!file_exists($autoload)) {
     http_response_code(500);
     echo "Le fichier vendor/autoload.php est introuvable. Exécutez `composer install` à la racine du projet.";
